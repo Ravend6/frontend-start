@@ -44,7 +44,6 @@ const config = {
       }, {
         test: /\.css$/,
         loader: 'style!css',
-        // loader: 'style!css!postcss',
         exclude: excludeDirs
       }, {
         test: /\.scss$/,
@@ -58,14 +57,6 @@ const config = {
       }
     ]
   },
-  // postcss: function () {
-  //   return [
-  //     // require('autoprefixer')({ browsers: ['last 2 versions'] }),
-  //     // require('autoprefixer'),
-  //     require('precss'),
-  //     require('postcss-cssnext'),
-  //   ]
-  // },
   devServer: {
     host: 'localhost',
     port: 8080,
