@@ -1,0 +1,5 @@
+// require('style!css!foundation-sites/dist/foundation.min.css')
+// $(document).foundation()
+// require('style!css!bootstrap/dist/css/bootstrap.min.css')
+// require('style!css!font-awesome/css/font-awesome.min.css')
+require('./styles/app.scss')
