@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const LiveReloadPlugin = require('webpack-livereload-plugin')
 
 const NODE_ENV = process.env.NODE_ENV || 'development'
 const IS_TEST = (NODE_ENV === 'test')
@@ -42,7 +43,7 @@ const config = {
         exclude: excludeDirs
       }, {
         test: /\.css$/,
-        loader: 'style!css',
+        loader: 'style!css!postcss',
         exclude: excludeDirs
       }, {
         test: /\.scss$/,
@@ -56,6 +57,14 @@ const config = {
       }
     ]
   },
+  postcss: function () {
+    return [
+      // require('autoprefixer')({ browsers: ['last 2 versions'] }),
+      // require('autoprefixer'),
+      require('precss'),
+      require('postcss-cssnext'),
+    ]
+  },
   devServer: {
     host: 'localhost',
     port: 8080,
@@ -65,6 +74,8 @@ const config = {
     // }
   }
 }
+
+config.plugins.push(new LiveReloadPlugin())
 
 config.plugins.push(new webpack.ProvidePlugin({$: 'jquery', jQuery: 'jquery'}))
 
